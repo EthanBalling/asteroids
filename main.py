@@ -9,10 +9,13 @@ def main():
     clock = pygame.time.Clock()
     dt = 0
     
+    # Create groups
+    updateble = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    Player.containers = (updateble, drawable)
+    
     # Create and set the initial position of the player
-    x = SCREEN_WIDTH / 2
-    y = SCREEN_HEIGHT / 2
-    player = Player(x, y)
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     
     # Game loop
     while True:
@@ -22,13 +25,18 @@ def main():
                 return
         
         # Update player position
-        player.update(dt)
+        #player.update(dt)
+        # Update all sprites in the updateble group
+        updateble.update(dt)
         
         # Screen clearing
         screen.fill("black")
         
         # Draw the player
-        player.draw(screen)
+        #player.draw(screen)
+        # Draw all sprites in the drawable group
+        for object in drawable:
+            object.draw(screen)
         
         # Refresh and limit the framerate to 60 FPS
         pygame.display.flip()
