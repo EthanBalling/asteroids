@@ -20,7 +20,11 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-        # Screen
+        
+        # Update player position
+        player.update(dt)
+        
+        # Screen clearing
         screen.fill("black")
         
         # Draw the player
