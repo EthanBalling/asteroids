@@ -41,10 +41,17 @@ def main():
         # Update all sprites in the updatable group
         updatable.update(dt)
         
+        # Check for collisions
         for asteroid in asteroids:
+            # Check for player and asteroid collisions
             if asteroid.check_collision(player):
                 print("Game Over!")
                 sys.exit()
+            # Check for shot and asteroid collisions
+            for shot in shots:
+                if asteroid.check_collision(shot):
+                    asteroid.kill()
+                    shot.kill()
         
         # Screen clearing
         screen.fill("black")
