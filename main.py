@@ -46,6 +46,7 @@ def main():
             # Check for player and asteroid collisions
             if asteroid.check_collision(player):
                 print("Game Over!")
+                print(f"You lasted {clock.get_time()} seconds")
                 sys.exit()
             # Check for shot and asteroid collisions
             for shot in shots:
