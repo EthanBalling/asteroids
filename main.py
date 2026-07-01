@@ -12,7 +12,10 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
     dt = 0
-    
+
+    print("Starting Asteroids!")
+    print(f"Screen width: {SCREEN_WIDTH}")
+    print(f"Screen height: {SCREEN_HEIGHT}")
     # Create and assign sprite groups
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
@@ -34,10 +37,6 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-        '''
-        # Update player position
-        player.update(dt)
-        '''
         # Update all sprites in the updatable group
         updatable.update(dt)
         
@@ -57,10 +56,6 @@ def main():
         # Screen clearing
         screen.fill("black")
         
-        '''
-        # Draw the player
-        player.draw(screen)
-        '''
         # Draw all sprites in the drawable group
         for object in drawable:
             object.draw(screen)
@@ -69,11 +64,6 @@ def main():
         pygame.display.flip()
         dt = clock.tick(60) / 1000.0
 
-    '''
-    print("Starting Asteroids!")
-    print(f"Screen width: {SCREEN_WIDTH}")
-    print(f"Screen height: {SCREEN_HEIGHT}")
-    '''
 
 if __name__ == "__main__":
     main()
